@@ -30,8 +30,9 @@ const Banner = () => {
           className="w-[80%] object-cover spin-slow"
         />
         <div className="absolute">
-          <h1 className="font-clashDisplay uppercase font-bold text-cyber-ink text-[2.75rem] md:text-[7xl] lg:text-[4rem] xl:text-[5.75rem] max-w-4xl mx-auto text-center z-10">
-            THE EMAIL SENDER PLATFORM BUILT FOR
+          
+          <h1 className=" font-clashDisplay uppercase font-bold text-cyber-ink text-[0.75rem] md:text-[7xl] lg:text-[4rem] xl:text-[3.75rem] max-w-4xl mx-auto text-center z-10 overflow-hidden">
+            THE  EMAIL  SENDER  PLATFORM  BUILT FOR
             <span className="font-style">GROW</span>
           </h1>
           <br />

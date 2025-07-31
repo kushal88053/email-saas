@@ -2,6 +2,7 @@
 
 import { HeroUIProvider } from "@heroui/react";
 import { usePathname } from 'next/navigation';
+import { useUser } from "@clerk/nextjs";
 
 interface ProvidersProps {
     children: React.ReactNode;
@@ -9,11 +10,12 @@ interface ProvidersProps {
 
 export default function Providers({ children }: ProvidersProps) {
     const pathname = usePathname();
+    const { isLoaded, user } = useUser();
 
     const isSpecialRoute =
-        pathname == "/dasgboard/new-email" ||
+        pathname === "/dashboard/new-email" ||
         pathname === "/" ||
-        pathname === "/singup" ||
+        pathname === "/sign-up" ||
         pathname === "/subscribe" ||
         pathname === "/sign-in";
 
