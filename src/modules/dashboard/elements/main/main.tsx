@@ -1,13 +1,15 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { ICONS } from "@/shared/utils/icons";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import DashboardOverViewCard from "@/shared/components/cards/overview.card";
+import SubscribersChart from "@/shared/components/charts/subscribers.chart";
 
-const Main = () => {
+export const Main = () => {
   const { user } = useUser();
   const [copied, setCopied] = useState(false);
 
@@ -35,7 +37,10 @@ const Main = () => {
       </p>
       <div className="w-full flex">
         <div className="w-[65%] min-h-[88vh] pr-5">
-        
+          <br />
+          <DashboardOverViewCard />
+          <br />
+          <SubscribersChart />
         </div>
         <div className="w-[35%] p-5">
           {/* create newsletter button */}
@@ -59,9 +64,8 @@ const Main = () => {
                   onClick={handleCopyClick}
                 >
                   <small
-                    className={`w-[70%] text-sm overflow-hidden overflow-ellipsis whitespace-nowrap copy-text ${
-                      copied ? "bg-blue-200" : "bg-transparent"
-                    }`}
+                    className={`w-[70%] text-sm overflow-hidden overflow-ellipsis whitespace-nowrap copy-text ${copied ? "bg-blue-200" : "bg-transparent"
+                      }`}
                   >
                     {process.env.NEXT_PUBLIC_WEBSITE_URL}/subscribe?username=
                     {user?.username}
@@ -74,52 +78,9 @@ const Main = () => {
               </div>
             </div>
           </div>
-
-          {/* tutorials */}
-          <div className="w-full bg-white border rounded p-5 my-3">
-            <h5 className="font-medium">Tutorials</h5>
-            <p className="text-sm opacity-[.7]">
-              Learn how to get started on becodemy and utilize all our features,
-              directly from the becodemy team.
-            </p>
-            <br />
-            <Button className="bg-[#FBCFE8] text-[#831743] rounded-lg h-[35px] flex items-center">
-              Tutorials <span>{ICONS.link}</span>
-            </Button>
-          </div>
-
-          {/* Need help? */}
-          <div className="w-full bg-white border rounded p-5 my-3">
-            <h5 className="font-medium">Need help?</h5>
-            <Link href={"/"}>
-              <div className="w-max px-3 my-2 h-[33px] bg-transparent border rounded-lg flex items-center">
-                <span className="text-sm">Knowledge base</span>
-                <span className="ml-1">{ICONS.link}</span>
-              </div>
-            </Link>
-            <Link href={"/"}>
-              <div className="w-max px-3 my-2 h-[33px] bg-transparent border rounded-lg flex items-center">
-                <span className="text-sm">API Documentation</span>
-                <span className="ml-1">{ICONS.link}</span>
-              </div>
-            </Link>
-            <Link href={"/"}>
-              <div className="w-max px-3 my-2 h-[33px] bg-transparent border rounded-lg flex items-center">
-                <span className="text-sm">Blog</span>
-                <span className="ml-1">{ICONS.link}</span>
-              </div>
-            </Link>
-            <Link href={"/"}>
-              <div className="w-max px-3 my-2 h-[33px] bg-transparent border rounded-lg flex items-center">
-                <span className="text-sm">FAQ</span>
-                <span className="ml-1">{ICONS.link}</span>
-              </div>
-            </Link>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Main;

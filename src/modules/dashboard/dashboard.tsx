@@ -1,4 +1,4 @@
-import Main from "./elements/main/main";
+import {Main} from "./elements/main/main";
 
 const Dashboard = () => {
   return (

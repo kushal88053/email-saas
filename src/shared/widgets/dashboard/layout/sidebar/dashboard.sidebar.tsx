@@ -2,8 +2,8 @@
 
 import { ICONS } from "@/shared/utils/icons";
 import { useUser } from "@clerk/nextjs";
-// import DashboardItems from "./dashboard.items";
-// import UserPlan from "./user.plan";
+import DashboardItems from "./dashboard.items";
+import UserPlan from "./user.plan";
 
 const DashboardSideBar = () => {
   const { user } = useUser();
@@ -15,9 +15,9 @@ const DashboardSideBar = () => {
         <h5 className="pl-2 pt-1 capitalize">{user?.username} Newsletter</h5>
       </div>
       <div>
-        {/* <DashboardItems />
-        <UserPlan />
-        <DashboardItems bottomContent={true} /> */}
+        <DashboardItems />
+        {/* <UserPlan /> */}
+        <DashboardItems bottomContent={true} />
       </div>
     </div>
   );
