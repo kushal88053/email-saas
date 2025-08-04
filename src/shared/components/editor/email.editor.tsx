@@ -5,9 +5,9 @@ import { DefaultJsonData } from "@/assets/mails/default";
 import { useClerk } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
-// import { saveEmail } from "@/actions/save.email";
 import toast from "react-hot-toast";
-// import { GetEmailDetails } from "@/actions/get.email-details";
+import { saveEmail } from "@/actions/save.email";
+import { GetEmailDetails } from "@/actions/get.email-details";
 // import { sendEmail } from "@/shared/utils/email.sender";
 
 const Emaileditor = ({ subjectTitle }: { subjectTitle: string }) => {
@@ -17,25 +17,25 @@ const Emaileditor = ({ subjectTitle }: { subjectTitle: string }) => {
   const emailEditorRef = useRef<EditorRef>(null);
   const history = useRouter();
 
-  const exportHtml = () => {
-    const unlayer = emailEditorRef.current?.editor;
+//   const exportHtml = () => {
+//     const unlayer = emailEditorRef.current?.editor;
 
-    unlayer?.exportHtml(async (data) => {
-      const { design, html } = data;
-      setJsonData(design);
-      await sendEmail({
-        userEmail: ["sponsorship@becodemy.com"],
-        subject: subjectTitle,
-        content: html,
-      }).then((res) => {
-        toast.success("Email sent successfully!");
-        history.push("/dashboard/write");
-      });
-    });
-  };
+//     unlayer?.exportHtml(async (data) => {
+//       const { design, html } = data;
+//       setJsonData(design);
+//       await sendEmail({
+//         userEmail: ["kushal88053@gmail.com"],
+//         subject: subjectTitle,
+//         content: html,
+//       }).then((res) => {
+//         toast.success("Email sent successfully!");
+//         history.push("/dashboard/write");
+//       });
+//     });
+//   };
 
   useEffect(() => {
-    getEmailDetails();
+    // getEmailDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
@@ -45,6 +45,7 @@ const Emaileditor = ({ subjectTitle }: { subjectTitle: string }) => {
   };
 
   const saveDraft = async () => {
+    console.log("saveDraft") ;
     const unlayer = emailEditorRef.current?.editor;
 
     unlayer?.exportHtml(async (data) => {
@@ -90,7 +91,7 @@ const Emaileditor = ({ subjectTitle }: { subjectTitle: string }) => {
             </Button>
             <Button
               className="bg-[#000] text-white cursor-pointer flex items-center gap-1 border text-lg rounded-lg"
-              onClick={exportHtml}
+            //   onClick={exportHtml}
             >
               <span>Send</span>
             </Button>

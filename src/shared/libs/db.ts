@@ -13,7 +13,7 @@ export const connectDb = async () => {
 
   try {
     const db = await mongoose.connect(uri, {
-      dbName: "saas_emailer", // optional
+      dbName: "saas_emailer",
     });
 
     isConnected = true;
