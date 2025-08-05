@@ -11,15 +11,16 @@ type EmailType = {
   updatedAt?: string;
 };
 
-export const GetEmailDetails = async ({
+export const GetEmailDetails = async ({title ,
   newsLetterOwnerId,
 }: {
+    title : string , 
   newsLetterOwnerId: string;
 }): Promise<EmailType[]> => {
   try {
     await connectDb();
 
-    const emails = await Email.find({ newsLetterOwnerId }).lean();
+    const emails = await Email.find({title, newsLetterOwnerId }).lean();
 
     const cleaned: EmailType[] = emails.map((email: any) => ({
       _id: email._id.toString(),

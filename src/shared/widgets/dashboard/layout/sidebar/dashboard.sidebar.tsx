@@ -16,7 +16,7 @@ const DashboardSideBar = () => {
       </div>
       <div>
         <DashboardItems />
-        {/* <UserPlan /> */}
+        <UserPlan />
         <DashboardItems bottomContent={true} />
       </div>
     </div>

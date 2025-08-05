@@ -34,10 +34,9 @@ export const subscribe = async ({
     try {
         await connectDb();
         const validUser = await (await clerkClient()).users.getUserList({
-            // username: [username],
+            username: [username],
         });
 
-        // console.log(validUser);
         const newsletterOwner = validUser.totalCount;
 
         if (!newsletterOwner) {
