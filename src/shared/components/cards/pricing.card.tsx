@@ -1,19 +1,19 @@
-// import { stripeSubscribe } from "@/actions/stripe.subscribe";
+import { stripeSubscribe } from "@/actions/stripe.subscribe";
 import { GrowPlan, freePlan, scalePlan } from "@/app/configs/constants";
 import { ICONS } from "@/shared/utils/icons";
-// import { useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
 
 const PricingCard = ({ active }: { active: string }) => {
-//   const { user } = useUser();
+  const { user } = useUser();
   const history = useRouter();
   const handleSubscription = async ({ price }: { price: string }) => {
-    // await stripeSubscribe({ price: price, userId: user?.id! }).then(
-    //   (res: any) => {
-    //     history.push(res);
-    //   }
-    // );
+    await stripeSubscribe({ price: price, userId: user?.id! }).then(
+      (res: any) => {
+        history.push(res);
+      }
+    );
   };
 
   return (
@@ -84,7 +84,7 @@ const PricingCard = ({ active }: { active: string }) => {
         <br />
         <div className="border-b pb-8 border-black">
           <h5 className="font-clashDisplay uppercase text-cyber-ink text-3xl">
-            ${active === "Monthly" ? "49" : "42"} /month
+            ${active === "Monthly" ? "49" : "39"} /month
           </h5>
           <p className="text-lg">Billed {active}</p>
         </div>
@@ -105,8 +105,8 @@ const PricingCard = ({ active }: { active: string }) => {
             handleSubscription({
               price:
                 active === "Monthly"
-                  ? "price_1OnaWFSA1WAzNgKlsGN6K4ZW"
-                  : "price_1Onbt8SA1WAzNgKlyrXYlJBG",
+                  ? "price_1Rtjig5qQJiexizuwiEBEYhn"
+                  : "price_1Rtk0A5qQJiexizueceUiZ2j",
             })
           }
         >
@@ -114,7 +114,7 @@ const PricingCard = ({ active }: { active: string }) => {
         </Button>
         <p className="pt-1 opacity-[.7] text-center">
           30-day free trial of Scale features, then $
-          {active === "Monthly" ? "42" : "49"}/mo
+          {active === "Monthly" ? "49" : "39"}/mo
         </p>
       </div>
 
@@ -140,7 +140,7 @@ const PricingCard = ({ active }: { active: string }) => {
         <br />
         <div className="border-b pb-8 border-[#000]">
           <h5 className="font-clashDisplay uppercase text-cyber-ink text-3xl">
-            ${active === "Monthly" ? "99" : "84"} /month
+            ${active === "Monthly" ? "99" : "89"} /month
           </h5>
           <p className="text-lg">Billed {active}</p>
         </div>
@@ -161,8 +161,8 @@ const PricingCard = ({ active }: { active: string }) => {
             handleSubscription({
               price:
                 active === "Monthly"
-                  ? "price_1On2H2SA1WAzNgKlV64Zj6gE"
-                  : "price_1Onf9gSA1WAzNgKlg8NLBP4r",
+                  ? "price_1Rtjho5qQJiexizuCpPllIxh"
+                  : "price_1Rtk3g5qQJiexizuuY9NViZ8",
             })
           }
         >
@@ -170,7 +170,7 @@ const PricingCard = ({ active }: { active: string }) => {
         </Button>
         <p className="pt-1 opacity-[.7] text-center">
           30-day free trial of Scale features, then $
-          {active === "Monthly" ? "99" : "84"}/mo
+          {active === "Monthly" ? "99" : "89"}/mo
         </p>
       </div>
     </div>

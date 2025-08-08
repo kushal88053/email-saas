@@ -1,4 +1,4 @@
-// import { manageSubscription } from "@/actions/manage.subscription";
+import { manageSubscription } from "@/actions/manage.subscription";
 import useGetMembership from "@/shared/hooks/useGetMembership";
 import useSubscribersData from "@/shared/hooks/useSubscribersData";
 import { ICONS } from "@/shared/utils/icons";
@@ -11,13 +11,13 @@ const UserPlan = () => {
     useGetMembership();
   const history = useRouter();
 
-//   const handleManage = async () => {
-//     await manageSubscription({
-//       customerId: membershipData?.stripeCustomerId,
-//     }).then((res: any) => {
-//       history.push(res);
-//     });
-//   };
+  const handleManage = async () => {
+    await manageSubscription({
+      customerId: membershipData?.stripeCustomerId,
+    }).then((res: any) => {
+      history.push(res);
+    });
+  };
 
   return (
     <div className="w-full my-3 p-3 bg-[#FDF1F8] rounded hover:shadow-xl cursor-pointer">
@@ -27,7 +27,7 @@ const UserPlan = () => {
         </h5>
         <div
           className="w-[95px] shadow ml-2 cursor-pointer h-[32px] flex justify-center items-center space-x-1 rounded-lg bg-[#E77CAE]"
-        //   onClick={handleManage}
+          onClick={handleManage}
         >
           <span className="text-white text-xl">{ICONS.electric}</span>
           <span className="text-white text-sm">Upgrade</span>

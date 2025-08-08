@@ -28,7 +28,9 @@ const Page = () => {
         console.log(error);
         setLoading(false);
       });
+
     setValue("");
+    
   };
 
   return (
